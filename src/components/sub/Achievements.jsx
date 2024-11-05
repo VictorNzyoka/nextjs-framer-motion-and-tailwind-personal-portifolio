@@ -1,27 +1,23 @@
-import React, { useEffect } from 'react'
-import { motion, useMotionValue } from 'framer-motion'
+import React, { useEffect } from 'react';
+import { motion, useMotionValue } from 'framer-motion';
 
 const Achievements = ({ title, amount, children }) => {
-  const number = useMotionValue(0)
+  const number = useMotionValue(0);
 
   // Start counting only when client renders
   useEffect(() => {
-    count(amount)
-  }, [amount])
-
-  const count = (amount) => {
-    let i = 0
+    let i = 0;
     const updateCount = () => {
-      let timeOut
+      let timeOut;
       if (i <= amount) {
-        number.set(i++)
-        timeOut = setTimeout(updateCount, 0)
+        number.set(i++);
+        timeOut = setTimeout(updateCount, 0);
       } else {
-        clearTimeout(timeOut)
+        clearTimeout(timeOut);
       }
-    }
-    updateCount()
-  }
+    };
+    updateCount();
+  }, [amount, number]); // adding 'number' as dependency to be safe
 
   return (
     <div className='flex items-end gap-x-3'>
@@ -35,7 +31,7 @@ const Achievements = ({ title, amount, children }) => {
         <span className='text-sm tracking-wide text-gray-500'>{title}</span>
       </h1>
     </div>
-  )
-}
+  );
+};
 
-export default Achievements
+export default Achievements;

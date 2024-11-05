@@ -1,19 +1,18 @@
 // src/app/assets/index.js
-import InstagramLineIcon from 'remixicon-react/InstagramLineIcon'
-import FacebookCircleLineIcon from 'remixicon-react/FacebookCircleLineIcon'
-import DribbbleLineIcon from 'remixicon-react/DribbbleLineIcon'
-import YoutubeLineIcon from 'remixicon-react/YoutubeLineIcon'
-import GithubLineIcon from 'remixicon-react/GithubLineIcon'
+import InstagramLineIcon from 'remixicon-react/InstagramLineIcon';
+import FacebookCircleLineIcon from 'remixicon-react/FacebookCircleLineIcon';
+import DribbbleLineIcon from 'remixicon-react/DribbbleLineIcon';
+import YoutubeLineIcon from 'remixicon-react/YoutubeLineIcon';
+import GithubLineIcon from 'remixicon-react/GithubLineIcon';
 
 export const heroIcons = [
-  <InstagramLineIcon size={24} />,
-  <FacebookCircleLineIcon size={24} />,
-  <DribbbleLineIcon size={24} />,
-  <YoutubeLineIcon size={24} />,
-  <GithubLineIcon size={24} />
-]
+  <InstagramLineIcon key="instagram" size={24} />,
+  <FacebookCircleLineIcon key="facebook" size={24} />,
+  <DribbbleLineIcon key="dribbble" size={24} />,
+  <YoutubeLineIcon key="youtube" size={24} />,
+  <GithubLineIcon key="github" size={24} />,
+];
 
-// About Me
 // About Me
 import GithubFillIcon from 'remixicon-react/GithubFillIcon';
 import Projector2LineIcon from 'remixicon-react/Projector2LineIcon';
@@ -27,28 +26,28 @@ export const aboutData = [
   {
     title: 'Github Repos',
     amount: 348,
-    icon: <GithubFillIcon />,
+    icon: <GithubFillIcon key="github-repos" />,
   },
   {
     title: 'Successful Projects',
     amount: 227,
-    icon: <Projector2LineIcon />,
+    icon: <Projector2LineIcon key="projects" />,
   },
   {
     title: 'Satisfied clients',
     amount: 176,
-    icon: <GroupLineIcon />,
+    icon: <GroupLineIcon key="clients" />,
   },
   {
     title: 'Awards and Recognition',
     amount: 107,
-    icon: <AwardFillIcon />,
+    icon: <AwardFillIcon key="awards" />,
   },
 ];
 
-export const downloadIcon = <DownloadLineIcon />;
-export const arrowLeftIcon = <ArrowLeftSFillIcon />;
-export const viewIcon = <EyeLineIcon />;  // Added view icon export
+export const downloadIcon = <DownloadLineIcon key="download" />;
+export const arrowLeftIcon = <ArrowLeftSFillIcon key="arrow-left" />;
+export const viewIcon = <EyeLineIcon key="view" />;  // Added view icon export
 export const aboutText = 
   "Hi, I'm Victor, i have a deep passion for IT, specializing in both software development and machine learning.I have experience creating responsive and visually engaging web applications using HTML, CSS, JavaScript, React, and Next.js,Nodejs.I’m passionate about building solutions that seamlessly combine functionality and design, ensuring both a smooth user experience and technical efficiency."
 // End of About Me
@@ -59,83 +58,34 @@ export const experienceData = [
     year: 2015,
     title: 'K.C.P.E',
     education: [
-      'K.C.P.E (2015) - Kitende Primary School',
+      { id: 'kcpe-edu', text: 'K.C.P.E (2015) - Kitende Primary School' },
     ],
     experience: [
-      'Gained foundational skills in basic subjects.',
+      { id: 'kcpe-exp', text: 'Gained foundational skills in basic subjects.' },
     ],
   },
   {
     year: 2021,
     title: 'K.C.S.E',
     education: [
-      'K.C.S.E (2021) - Ndolo Boys Secondary School',
+      { id: 'kcse-edu', text: 'K.C.S.E (2021) - Ndolo Boys Secondary School' },
     ],
     experience: [
-      'Built a strong foundation in sciences, mathematics, and computer studies.',
+      { id: 'kcse-exp', text: 'Built a strong foundation in sciences, mathematics, and computer studies.' },
     ],
   },
   {
     year: 2024,
     title: 'Bachelor of Science in Information Technology (Expected)',
     education: [
-      'Bachelor of Science in Information Technology (Expected 2024) - Dedan Kimathi University of Technology',
+      { id: 'bsc-edu', text: 'Bachelor of Science in Information Technology (Expected 2024) - Dedan Kimathi University of Technology' },
     ],
     experience: [
-      'Advanced IT Courses: Data structures, algorithms, databases, and software engineering principles.',
-      'Independent Projects: Worked on several independent projects to strengthen technical skills.',
+      { id: 'bsc-it1', text: 'Advanced IT Courses: Data structures, algorithms, databases, and software engineering principles.' },
+      { id: 'bsc-it2', text: 'Independent Projects: Worked on several independent projects to strengthen technical skills.' },
     ],
   },
-  // {
-  //   year: 2024,
-  //   title: 'Maize Plant Disease Detection',
-  //   education: [
-  //     'Research in machine learning and mobile development techniques.',
-  //   ],
-  //   experience: [
-  //     'Developed a mobile app using machine learning to help farmers detect maize plant diseases from plant images.',
-  //     'Utilized Python, TensorFlow, and Java for development.',
-  //     'Gained experience in integrating machine learning models into mobile applications.',
-  //   ],
-  // },
-  // {
-  //   year: 2023,
-  //   title: 'Mess Management System',
-  //   education: [
-  //     'Coursework in web development and database management.',
-  //   ],
-  //   experience: [
-  //     'Designed and developed a web-based application for Dedan Kimathi University\'s mess management.',
-  //     'Implemented features for menu planning, inventory management, and online ordering using HTML, CSS, JavaScript, and PHP.',
-  //     'Gained hands-on experience in full-stack web development.',
-  //   ],
-  // },
-  // {
-  //   year: 2023,
-  //   title: 'Job Listings Application',
-  //   education: [
-  //     'Studied backend development with Laravel and MySQL.',
-  //   ],
-  //   experience: [
-  //     'Developed a job listings application using Laravel where users can register, login, create, and manage job listings.',
-  //     'Implemented features like user authentication, job listings management, image upload, search, and filter functionality.',
-  //     'Enhanced understanding of PHP and Laravel framework for dynamic web applications.',
-  //   ],
-  // },
-  // {
-  //   year: 2022,
-  //   title: 'Car Listing Application',
-  //   education: [
-  //     'Learned about Java application development and Firebase database integration.',
-  //   ],
-  //   experience: [
-  //     'Developed a car listing application in Java that allows users to browse and manage car listings.',
-  //     'Implemented features such as car details management, search functionality, and user authentication.',
-  //     'Gained experience in data persistence and user authentication in Java applications.',
-  //   ],
-  // },
 ];
-
 
 export const skillsData = [
   {
@@ -199,4 +149,3 @@ export const skillsData = [
     icon: '/skills/java.webp',
   },
 ];
-

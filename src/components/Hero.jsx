@@ -73,7 +73,7 @@ const Hero = () => {
               My name is Victor Nzyoka &
             </h1>
             <p className="text-lg md:text-xl tracking-wider text-gray-600">
-              I like animations
+              Am a Software Engineer
             </p>
           </div>
 

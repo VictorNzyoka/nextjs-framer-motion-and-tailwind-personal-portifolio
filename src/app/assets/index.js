@@ -58,31 +58,31 @@ export const experienceData = [
     year: 2015,
     title: 'K.C.P.E',
     education: [
-      { id: 'kcpe-edu', text: 'K.C.P.E (2015) - Kitende Primary School' },
+      'K.C.P.E (2015) - Kitende Primary School' 
     ],
     experience: [
-      { id: 'kcpe-exp', text: 'Gained foundational skills in basic subjects.' },
+       'Gained foundational skills in basic subjects.' 
     ],
   },
   {
     year: 2021,
     title: 'K.C.S.E',
     education: [
-      { id: 'kcse-edu', text: 'K.C.S.E (2021) - Ndolo Boys Secondary School' },
+       'K.C.S.E (2021) - Ndolo Boys Secondary School' 
     ],
     experience: [
-      { id: 'kcse-exp', text: 'Built a strong foundation in sciences, mathematics, and computer studies.' },
+      'Built a strong foundation in sciences, mathematics, and computer studies.' 
     ],
   },
   {
     year: 2024,
     title: 'Bachelor of Science in Information Technology (Expected)',
     education: [
-      { id: 'bsc-edu', text: 'Bachelor of Science in Information Technology (Expected 2024) - Dedan Kimathi University of Technology' },
+       'Bachelor of Science in Information Technology (Expected 2024) - Dedan Kimathi University of Technology' 
     ],
     experience: [
-      { id: 'bsc-it1', text: 'Advanced IT Courses: Data structures, algorithms, databases, and software engineering principles.' },
-      { id: 'bsc-it2', text: 'Independent Projects: Worked on several independent projects to strengthen technical skills.' },
+        'Advanced IT Courses: Data structures, algorithms, databases, and software engineering principles.' ,
+         'Independent Projects: Worked on several independent projects to strengthen technical skills.' 
     ],
   },
 ];

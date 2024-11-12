@@ -32,11 +32,11 @@ const Hero = () => {
   const rotateX = useTransform(ySpring, [0, innerHeight], [10, -50]);
 
   return (
-    <div className="">
+    <div className="flex">
       {/* Sidebar */}
       <Sidebar />
       <section
-        className="min-h-screen flex items-center justify-center bg-gray-50 relative" // Ensures full screen and flex centering
+        className="min-h-screen flex items-center justify-center bg-gray-50 relative pl-20" // Add padding-left to leave space for the sidebar
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
       >

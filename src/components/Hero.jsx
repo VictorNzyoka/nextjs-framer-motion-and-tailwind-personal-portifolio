@@ -32,9 +32,9 @@ const Hero = () => {
   const rotateX = useTransform(ySpring, [0, innerHeight], [10, -50]);
 
   return (
-    <div className="">
-      {/* Sidebar */}
-      <Sidebar />
+    // <div className="">
+    //   {/* Sidebar */}
+    //   <Sidebar />
       <section
         className="min-h-screen flex items-center justify-center bg-gray-50 relative" // Ensures full screen and flex centering
         onMouseMove={handleMouseMove}
@@ -127,7 +127,7 @@ const Hero = () => {
           </div>
         </div>
       </section>
-    </div>
+    // </div>
   );
 };
 

@@ -1,134 +1,86 @@
-'use client';
-import Image from 'next/image';
-import { heroIcons } from '@/app/assets';
-import React, { useState } from 'react';
-import { useMotionValue, useTransform, motion, useSpring } from 'framer-motion';
-import Sidebar from './Sidebar';
+'use client'
 
-const Hero = () => {
-  const [windowOffset, setWindowOffset] = useState({ innerWidth: 0, innerHeight: 0 });
-  const [mouseMove, setMouseMove] = useState(false);
-  const [buttonHover, setButtonHover] = useState(false);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { Home, User, Briefcase, BookOpen, Layers, Mail } from 'lucide-react'
 
-  const handleMouseMove = (e) => {
-    const { clientX, clientY } = e;
-    x.set(clientX);
-    y.set(clientY);
-  };
+// Updated iconMap to match your navItems IDs exactly
+const iconMap = {
+  home: { Icon: Home, color: "text-blue-500" },
+  about: { Icon: User, color: "text-green-500" },
+  experience: { Icon: Briefcase, color: "text-yellow-500" },
+  skills: { Icon: BookOpen, color: "text-purple-500" },
+  projects: { Icon: Layers, color: "text-red-500" },
+  contacts: { Icon: Mail, color: "text-indigo-500" }, // Changed from 'contact' to 'contacts' to match your ID
+}
 
-  const handleMouseEnter = () => {
-    setWindowOffset({ innerWidth: window.innerWidth, innerHeight: window.innerHeight });
-    setMouseMove(true);
-  };
+export default function Sidebar({ navItems = [], scrollToSection }) {
+  const [isMounted, setIsMounted] = useState(false)
 
-  const { innerWidth, innerHeight } = windowOffset;
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
-  const xSpring = useSpring(x, { stiffness: 100, damping: 10 });
-  const ySpring = useSpring(y, { stiffness: 100, damping: 10 });
-
-  const rotateY = useTransform(xSpring, [0, innerWidth], [-30, 30]);
-  const rotateX = useTransform(ySpring, [0, innerHeight], [10, -50]);
+  if (!isMounted) {
+    return null
+  }
 
   return (
-    <div className="flex">
-      {/* Sidebar */}
-      <Sidebar />
-      <section
-        className="min-h-screen flex items-center justify-center bg-gray-50 relative pl-20" // Add padding-left to leave space for the sidebar
-        onMouseMove={handleMouseMove}
-        onMouseEnter={handleMouseEnter}
-      >
-        <div className="max-w-2xl mx-auto px-4 py-8">
-          <div className="flex flex-col items-center justify-center space-y-6">
-            {/* Image Container with Overlay Text */}
-            <div className="relative">
+    <motion.aside
+      initial={{ x: '-100%' }}
+      animate={{ x: 0 }}
+      transition={{ duration: 0.5 }}
+      className="fixed left-0 top-0 h-full w-20 bg-gray-200 flex flex-col items-center py-6 z-50"
+    >
+      {/* Logo */}
+      <div className="flex flex-col items-center">
+        <span className="text-red-600 font-bold text-xl">V.</span>
+        <span className="text-xs text-gray-400">Nzyoka</span>
+      </div>
+
+      {/* Navigation Icons - Centered container */}
+      <div className="flex-grow flex items-center">
+        <div className="flex flex-col space-y-8">
+          {navItems.map((item, index) => {
+            const iconConfig = iconMap[item.id.toLowerCase()]
+            
+            // Debug line to check if icons are being found
+            console.log(`Item ID: ${item.id}, Icon found:`, !!iconConfig)
+            
+            if (!iconConfig) return null
+            
+            const { Icon, color } = iconConfig
+            
+            return (
               <motion.div
-                className="relative w-[150px] h-[150px] rounded-full overflow-hidden"
-                style={{
-                  rotateX: mouseMove ? rotateX : 0,
-                  rotateY: mouseMove ? rotateY : 0,
-                  transition: '0.1s',
-                }}
+                key={index}
+                whileHover={{ scale: 1.2 }}
+                className="group relative flex flex-col items-center cursor-pointer"
+                onClick={() => scrollToSection(item.id)}
               >
-                <Image
-                  src="/pic1.jpeg"
-                  alt="Victor Nzyoka"
-                  width={200}
-                  height={200}
-                  priority={true}
-                  className="object-cover"
-                />
+                {/* Icon */}
+                <div className={`${color} transition-colors group-hover:opacity-80`}>
+                  <Icon size={24} />
+                </div>
+                
+                {/* Tooltip (appears below on hover) */}
+                <motion.div 
+                  initial={{ opacity: 0, y: -4 }}
+                  whileHover={{ opacity: 1, y: 0 }}
+                  className="absolute top-full mt-2 bg-gray-800 px-2 py-1 rounded opacity-0 group-hover:opacity-100 text-white text-sm transition-all duration-200"
+                >
+                  {item.name}
+                </motion.div>
               </motion.div>
-              <motion.span
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl font-semibold text-white drop-shadow-lg"
-                initial={{ scale: 0 }}
-                animate={{
-                  opacity: buttonHover ? 0 : 1,
-                  scale: buttonHover ? 2 : 0,
-                  y: buttonHover ? -40 : 0,
-                }}
-                transition={{
-                  opacity: { delay: 0.4 },
-                }}
-              >
-                Hi
-              </motion.span>
-            </div>
-
-            {/* Text Content */}
-            <div className="text-center space-y-3">
-              <h1 className="text-3xl md:text-4xl font-bold tracking-wider text-gray-700 sm:text-2xl">
-                My name is Victor Nzyoka &
-              </h1>
-              <p className="text-lg md:text-xl tracking-wider text-gray-600">
-                Am a Software Engineer
-              </p>
-            </div>
-
-            {/* Social Icons */}
-            <div className="flex items-center justify-center gap-x-10 mt-8 text-3xl text-yellow-600 sm:text-2xl">
-              {heroIcons.map((icon, i) => {
-                const socialLinks = [
-                  'https://instagram.com/yourusername',
-                  'https://facebook.com/yourusername',
-                  'https://dribbble.com/yourusername',
-                  'https://youtube.com/@yourusername',
-                  'https://github.com/yourusername',
-                ];
-
-                return (
-                  <a
-                    href={socialLinks[i]}
-                    key={i}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:bg-red-400 hover:text-white transition-colors p-2 rounded-lg"
-                  >
-                    {React.cloneElement(icon, {
-                      size: '24',
-                      className: 'w-6 h-6',
-                    })}
-                  </a>
-                );
-              })}
-            </div>
-
-            {/* CTA Button */}
-            <a
-              href="#contact"
-              className="inline-block mt-6 px-6 py-3 rounded-lg bg-blue-400 text-white font-medium tracking-wider hover:bg-blue-500 transition-colors duration-300 shadow-md hover:shadow-lg"
-              onMouseEnter={() => setButtonHover(true)}
-              onMouseLeave={() => setButtonHover(false)}
-            >
-              Talk to me
-            </a>
-          </div>
+            )
+          })}
         </div>
-      </section>
-    </div>
-  );
-};
+      </div>
 
-export default Hero;
+      {/* Footer */}
+      <div className="text-xs text-gray-400">
+        © 2019 - {new Date().getFullYear()}
+      </div>
+    </motion.aside>
+  )
+}

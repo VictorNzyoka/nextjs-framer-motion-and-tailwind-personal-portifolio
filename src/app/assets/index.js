@@ -55,13 +55,14 @@ export const aboutText =
 
 export const experienceData = [
   {
-    year: 2015,
-    title: 'K.C.P.E',
+    year: 2024,
+    title: 'Bachelor of Science in Information Technology (Expected)',
     education: [
-      'K.C.P.E (2015) - Kitende Primary School' 
+       'Bachelor of Science in Information Technology (Expected 2024) - Dedan Kimathi University of Technology' 
     ],
     experience: [
-       'Gained foundational skills in basic subjects.' 
+        'Advanced IT Courses: Data structures, algorithms, databases, and software engineering principles.' ,
+         'Independent Projects: Worked on several independent projects to strengthen technical skills.' 
     ],
   },
   {
@@ -75,14 +76,13 @@ export const experienceData = [
     ],
   },
   {
-    year: 2024,
-    title: 'Bachelor of Science in Information Technology (Expected)',
+    year: 2015,
+    title: 'K.C.P.E',
     education: [
-       'Bachelor of Science in Information Technology (Expected 2024) - Dedan Kimathi University of Technology' 
+      'K.C.P.E (2015) - Kitende Primary School' 
     ],
     experience: [
-        'Advanced IT Courses: Data structures, algorithms, databases, and software engineering principles.' ,
-         'Independent Projects: Worked on several independent projects to strengthen technical skills.' 
+       'Gained foundational skills in basic subjects.' 
     ],
   },
 ];
